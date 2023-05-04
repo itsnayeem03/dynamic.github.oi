@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Creation</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    
+</head>
+
+<!---------------------style area strat-------------------- -->
+<style>        
+@import url('https://fonts.googleapis.com/css2?family=Comme:wght@100;200;300;400;500;600;700;800;900&family=Foldit:wght@100;200;300;400;500;600;700;800;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+   *{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+   }
+   body{
+    background:#AFCBFF;
+   }
+   p{
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+
+   }
+   .border{
+    border: 1px solid lightslategray;
+    padding: 5px;
+    border-radius: 6px;
+   }
+</style>
+<!-- -------------------style area end---------------------- -->
+
+
+<body>  
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 max-auto my-5">
+            <!-- ----------------Card start ---------------- -->
+            <div class="card shadow-lg">
+
+                <!-- card header start -->
+                <div class="card-header text-center">
+                    Dynamic Content
+                </div>
+                <!-- card header end -->
+
+                <!-- ------------card body start----------- -->
+                <div class="card-body">
+                    <!-- form start -->
+                    <form action="">
+
+                        <!-- text area start -->
+                        <label for="">Text Anything-</label>
+                        <input id="text" type="text" class="form-control my-2">
+                        <!-- text area end -->
+
+
+                        <!-- f-size start -->
+                        <label for="">Change Font-Size- (0px - 100px)</label>
+                        <input type="range" id="fontSize" value="10" step="1px" min="0" max="100" class="d-block w-100 my-2">
+                        <!-- f-size end -->
+
+
+
+                     
+                            <!-- text align start -->
+                        <label for="" class="my-2">Set Alignment-</label>
+                    
+                        <div class="border">
+                        <label for="" class="">Defult</label>
+                        <input type="radio" class="align" name="align" value="left">
+                         <label for="" class="mx-2">Center</label>
+                        <input type="radio" class="align" name="align" value="center">
+                         <label for="" class="mx-2">Right</label>
+                        <input type="radio" class="align" name="align" value="right">
+                        </div>
+                    <!-- text align end -->
+
+                    
+                    <!-- text Transforms start----------- -->
+                        <!-- text align start -->
+                      <br>
+                      
+                            <label for="" class="my-">Set Text Trans-forms-</label>
+                            <br>
+                            <div class="border">
+                            <label for="" class="mx-2">Upper-Case</label>
+                            <input type="radio" class="transform" name="transform" value="uppercase">
+                            <label for="" class="mx-2">Lower-case</label>
+                            <input type="radio" class="transform" name="transform" value="lowercase">
+                            <label for="" class="mx-2">Capitalize</label>
+                            <input type="radio" class="transform" name="transform" value="capitalize">
+                         </div>
+                        <!-- text align end -->
+
+                    <!-- text Transforms End----------- -->
+
+                        <!-- text color start -->
+                        <br>
+                        
+                        <label for="">Set Text Color-</label>
+                        <input type="color" id="color" class="w-25 color">
+                        <!-- text color end -->
+                        <br>
+
+                        <!-- font-family start -->
+                        <label for="" class="my-2">Set Font-Family-</label>
+                        <select name="fontFamily" id="fontFamily" class="my-3">
+                            <option value="">-Select Fonts-</option>
+                            <option value="Comme">Comme</option>
+                            <option value="Poppins">Poppins</option>
+                            <option value="Roboto">Roboto</option>
+                            <option value="Foldit">Foldit</option>
+                            <option value="impact">Impact</option>
+                        </select>
+                        <!-- font-family end -->
+
+                    </form>
+                    <!-- form end -->
+
+                </div>
+                <!-- card body end -->
+
+
+                <!-- card footer start -->
+                <div class="card-footer">
+                    <h1></h1>
+
+                    <p>
+                        &copy;-2023 
+                    </p>
+                    
+                </div>
+                <!-- card footer end -->
+
+            </div>
+            <!--------------- card end------------ -->
+        </div>
+    </div>
+</div>
+
+
+<!-- -----start JS  -->
+<script>
+    /* get elements------- */
+    const text =document.getElementById('text');
+    const fontSize =document.getElementById('fontSize');
+    const alignMent=document.querySelectorAll('.align');
+    const color = document.getElementById('color');
+    const fontFamily =document.getElementById('fontFamily');
+    const h1 =document.querySelector('h1');
+    const transform =document.querySelectorAll('.transform')
+
+
+
+    //events fire start -----------
+
+    text.onkeyup = () =>{
+        h1.innerHTML = text.value;
+    };
+    fontSize.oninput = () =>{
+        h1.style.fontSize = fontSize.value + 'px';
+    };
+
+    alignMent.forEach ( item => {
+        item.onchange = () =>{
+            h1.style.textAlign = item.value;
+        } 
+    });
+
+    color.oninput = () =>{
+        h1.style.color = color.value;
+    };
+
+fontFamily.onchange = () =>{
+    h1.style.fontFamily = fontFamily.value;
+};
+
+transform.forEach(item =>{
+    item.onchange = () =>{
+        h1.style.textTransform = item.value;
+    }
+});
+
+</script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<!--------------- end JS----------- -->
+
+</body>
+</html>
